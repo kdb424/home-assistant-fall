@@ -161,6 +161,8 @@ if (!customElements.get("ha-leaves")) {
   customElements.define("ha-leaves", HaLeaves);
 }
 
+console.info("[ha-leaves] module loaded");
+
 // Auto-inject the overlay when loaded as a module/resource.
 if (typeof document !== "undefined") {
   const inject = () => {
