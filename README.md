@@ -5,6 +5,11 @@
 A HACS-installable frontend plugin that adds falling autumn leaves to the
 Home Assistant UI, mirroring the built-in winter snowflake mode.
 
+## Repositories
+
+- Primary (Forgejo): https://git.kdb424.xyz/kdb424/home-assistant-fall
+- GitHub mirror (for HACS): https://github.com/kdb424/home-assistant-fall
+
 ## Install via HACS
 
 1. Open HACS in Home Assistant.
