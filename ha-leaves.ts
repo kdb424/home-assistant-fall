@@ -26,8 +26,8 @@ const LEAF_PATHS = [
   "M8 1 C9 4 10 8 9 12 C10 12 11 13 10 15 C9 16 7 16 6 15 C5 13 6 12 7 12 C6 8 7 4 8 1 Z",
 ];
 
-const LEAF_COLORS_LIGHT = ["#c0392b", "#d35400", "#e67e22", "#f39c12", "#7d3c98"];
-const LEAF_COLORS_DARK = ["#e74c3c", "#e67e22", "#f1c40f", "#d35400", "#9b59b6"];
+const LEAF_COLORS_LIGHT = ["#c0392b", "#d35400", "#e67e22", "#f39c12", "#f1c40f"];
+const LEAF_COLORS_DARK = ["#e74c3c", "#e67e22", "#f1c40f", "#d35400", "#f4d03f"];
 
 @customElement("ha-leaves")
 export class HaLeaves extends LitElement {
