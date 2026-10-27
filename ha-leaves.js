@@ -177,5 +177,3 @@ if (typeof document !== "undefined") {
     inject();
   }
 }
-EOF
-echo done
