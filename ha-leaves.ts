@@ -60,7 +60,7 @@ export class HaLeaves extends LitElement {
         left: Math.random() * 100,
         size: Math.random() * 16 + 12,
         duration: Math.random() * 6 + 8,
-        delay: Math.random() * 8,
+        delay: Math.random() * 3,
         rotation: Math.random() * 720 - 360,
         sway: Math.random() * 40 - 20,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
