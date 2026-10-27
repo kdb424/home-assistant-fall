@@ -21,21 +21,26 @@ Home Assistant UI, mirroring the built-in winter snowflake mode.
 
 ## Use
 
-Add the resource to your dashboard/Lovelace resources (HACS usually does
-this automatically):
+The module auto-injects the leaves overlay when it loads, so you only need
+to load it. Easiest is via `configuration.yaml`:
 
 ```yaml
-resources:
-  - url: /hacsfiles/home-assistant-fall/ha-leaves.js
-    type: module
+frontend:
+  extra_module_url:
+    - /hacsfiles/home-assistant-fall/ha-leaves.js
 ```
 
-Then add the element where you want it (for example in a dashboard card or
-panel). The leaves only render when `enabled` is true:
+Or as a Lovelace resource:
 
-```html
-<ha-leaves enabled narrow></ha-leaves>
+```yaml
+lovelace:
+  resources:
+    - url: /hacsfiles/home-assistant-fall/ha-leaves.js
+      type: module
 ```
+
+Restart Home Assistant after adding. Leaves appear automatically. No card or
+YAML placement is needed.
 
 Attributes:
 

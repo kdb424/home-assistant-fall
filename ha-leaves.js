@@ -133,3 +133,18 @@ export class HaLeaves extends LitElement {
     }
   `;
 }
+
+// Auto-enable when loaded as a resource/module: inject the overlay into the page.
+if (typeof document !== "undefined") {
+  const inject = () => {
+    if (document.querySelector("ha-leaves")) return;
+    const el = document.createElement("ha-leaves");
+    el.enabled = true;
+    (document.body || document.documentElement).appendChild(el);
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", inject, { once: true });
+  } else {
+    inject();
+  }
+}

@@ -178,3 +178,18 @@ declare global {
     "ha-leaves": HaLeaves;
   }
 }
+
+// Auto-enable when loaded as a module: inject the overlay into the page.
+if (typeof document !== "undefined") {
+  const inject = () => {
+    if (document.querySelector("ha-leaves")) return;
+    const el = document.createElement("ha-leaves") as HaLeaves;
+    el.enabled = true;
+    (document.body || document.documentElement).appendChild(el);
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", inject, { once: true });
+  } else {
+    inject();
+  }
+}
