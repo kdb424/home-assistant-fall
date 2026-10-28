@@ -154,7 +154,7 @@ class HaLeaves extends HTMLElement {
         sway: Math.random() * 200 - 100,
         tilt: Math.random() * 30 + 40,
         tumble: Math.random() < 0.2,
-        blow: Math.random() < 0.25,
+        blow: Math.random() < 0.1,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
