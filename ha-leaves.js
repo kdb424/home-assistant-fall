@@ -39,6 +39,7 @@ const CSS = `
   }
   .leaf.hide-narrow { display: none; }
   .leaf.tumble { animation: tumble linear infinite; }
+  .leaf.blow { animation: blow linear infinite; }
   @keyframes fall {
     0% { transform: translateY(-10.0vh) translateX(calc(var(--sway) * 0.000)) rotate(calc(var(--rotation) + var(--tilt) * 1.000)) scaleX(1); }
     5% { transform: translateY(-3.5vh) translateX(calc(var(--sway) * 0.809)) rotate(calc(var(--rotation) + var(--tilt) * 0.588)) scaleX(1); }
@@ -68,6 +69,14 @@ const CSS = `
     50% { transform: translateY(55vh) translateX(0) rotate(calc(var(--rotation) + 360deg)) scaleX(1); }
     75% { transform: translateY(82.5vh) translateX(calc(var(--sway) * -0.2)) rotate(calc(var(--rotation) + 540deg)) scaleX(1); }
     100% { transform: translateY(120vh) translateX(0) rotate(calc(var(--rotation) + 720deg)) scaleX(1); }
+  }
+
+  @keyframes blow {
+    0% { transform: translateY(-10vh) translateX(-20vw) rotate(var(--rotation)) scaleX(1); }
+    25% { transform: translateY(27.5vh) translateX(10vw) rotate(calc(var(--rotation) + 90deg)) scaleX(1); }
+    50% { transform: translateY(55vh) translateX(40vw) rotate(calc(var(--rotation) + 180deg)) scaleX(1); }
+    75% { transform: translateY(82.5vh) translateX(70vw) rotate(calc(var(--rotation) + 270deg)) scaleX(1); }
+    100% { transform: translateY(120vh) translateX(100vw) rotate(calc(var(--rotation) + 360deg)) scaleX(1); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -144,7 +153,8 @@ class HaLeaves extends HTMLElement {
         rotation: Math.random() * 720 - 360,
         sway: Math.random() * 200 - 100,
         tilt: Math.random() * 30 + 40,
-        tumble: Math.random() < 0.25,
+        tumble: Math.random() < 0.2,
+        blow: Math.random() < 0.25,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
@@ -164,6 +174,7 @@ class HaLeaves extends HTMLElement {
       svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
       svg.classList.add("leaf");
       if (leaf.tumble) svg.classList.add("tumble");
+      else if (leaf.blow) svg.classList.add("blow");
       if (this._narrow && leaf.id >= 28) svg.classList.add("hide-narrow");
 
       svg.style.left = leaf.left + "%";

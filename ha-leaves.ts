@@ -13,6 +13,7 @@ interface Leaf {
   sway: number;
   tilt: number;
   tumble: boolean;
+  blow: boolean;
   type: number;
   color: string;
 }
@@ -66,7 +67,8 @@ export class HaLeaves extends LitElement {
         rotation: Math.random() * 720 - 360,
         sway: Math.random() * 200 - 100,
         tilt: Math.random() * 30 + 40,
-        tumble: Math.random() < 0.25,
+        tumble: Math.random() < 0.2,
+        blow: Math.random() < 0.25,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
@@ -87,7 +89,7 @@ export class HaLeaves extends LitElement {
         ${this._leaves.map(
           (leaf) => html`
             <svg
-              class="leaf ${leaf.tumble ? "tumble" : ""} ${this.narrow && leaf.id >= 28 ? "hide-narrow" : ""}"
+              class="leaf ${leaf.tumble ? "tumble" : leaf.blow ? "blow" : ""} ${this.narrow && leaf.id >= 28 ? "hide-narrow" : ""}"
               style=${styleMap({
                 left: `${leaf.left}%`,
                 width: `${leaf.size}px`,
@@ -145,6 +147,10 @@ export class HaLeaves extends LitElement {
 
     .leaf.tumble {
       animation: tumble linear infinite;
+    }
+
+    .leaf.blow {
+      animation: blow linear infinite;
     }
 
     .leaf.hide-narrow {
@@ -299,6 +305,29 @@ export class HaLeaves extends LitElement {
       100% {
         transform: translateY(120vh) translateX(0)
           rotate(calc(var(--rotation) + 720deg)) scaleX(1);
+      }
+    }
+
+    @keyframes blow {
+      0% {
+        transform: translateY(-10vh) translateX(-20vw)
+          rotate(var(--rotation)) scaleX(1);
+      }
+      25% {
+        transform: translateY(27.5vh) translateX(10vw)
+          rotate(calc(var(--rotation) + 90deg)) scaleX(1);
+      }
+      50% {
+        transform: translateY(55vh) translateX(40vw)
+          rotate(calc(var(--rotation) + 180deg)) scaleX(1);
+      }
+      75% {
+        transform: translateY(82.5vh) translateX(70vw)
+          rotate(calc(var(--rotation) + 270deg)) scaleX(1);
+      }
+      100% {
+        transform: translateY(120vh) translateX(100vw)
+          rotate(calc(var(--rotation) + 360deg)) scaleX(1);
       }
     }
 
