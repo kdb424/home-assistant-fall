@@ -92,7 +92,7 @@ class HaLeaves extends HTMLElement {
     this._narrow = false;
     this._darkMode = false;
     this._leaves = [];
-    this._maxLeaves = 45;
+    this._maxLeaves = 56;
 
     const style = document.createElement("style");
     style.textContent = CSS;
@@ -175,7 +175,7 @@ class HaLeaves extends HTMLElement {
       svg.classList.add("leaf");
       if (leaf.tumble) svg.classList.add("tumble");
       else if (leaf.blow) svg.classList.add("blow");
-      if (this._narrow && leaf.id >= 28) svg.classList.add("hide-narrow");
+      if (this._narrow && leaf.id >= 35) svg.classList.add("hide-narrow");
 
       svg.style.left = leaf.left + "%";
       svg.style.width = leaf.size + "px";

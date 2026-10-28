@@ -40,7 +40,7 @@ export class HaLeaves extends LitElement {
 
   @state() private _leaves: Leaf[] = [];
 
-  private _maxLeaves = 45;
+  private _maxLeaves = 56;
 
   protected updated(changedProps: PropertyValues) {
     super.updated(changedProps);
@@ -89,7 +89,7 @@ export class HaLeaves extends LitElement {
         ${this._leaves.map(
           (leaf) => html`
             <svg
-              class="leaf ${leaf.tumble ? "tumble" : leaf.blow ? "blow" : ""} ${this.narrow && leaf.id >= 28 ? "hide-narrow" : ""}"
+              class="leaf ${leaf.tumble ? "tumble" : leaf.blow ? "blow" : ""} ${this.narrow && leaf.id >= 35 ? "hide-narrow" : ""}"
               style=${styleMap({
                 left: `${leaf.left}%`,
                 width: `${leaf.size}px`,
