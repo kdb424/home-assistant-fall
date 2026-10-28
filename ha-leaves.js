@@ -123,8 +123,8 @@ class HaLeaves extends HTMLElement {
         duration: Math.random() * 6 + 8,
         delay: Math.random() * 5.5,
         rotation: Math.random() * 720 - 360,
-        sway: Math.random() * 120 - 60,
-        tilt: Math.random() * 20 + 25,
+        sway: Math.random() * 200 - 100,
+        tilt: Math.random() * 30 + 40,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
