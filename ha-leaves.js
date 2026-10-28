@@ -40,11 +40,11 @@ const CSS = `
   .leaf.hide-narrow { display: none; }
   @keyframes fall {
     0% { transform: translateY(-10vh) translateX(0) rotate(var(--rotation)) scaleX(1); }
-    20% { transform: translateY(15vh) translateX(calc(var(--sway) * 0.95)) rotate(calc(var(--rotation) + var(--spin) * 0.2)) scaleX(0.75); }
-    40% { transform: translateY(40vh) translateX(calc(var(--sway) * 0.59)) rotate(calc(var(--rotation) + var(--spin) * 0.4)) scaleX(1); }
-    60% { transform: translateY(65vh) translateX(calc(var(--sway) * -0.59)) rotate(calc(var(--rotation) + var(--spin) * 0.6)) scaleX(0.6); }
-    80% { transform: translateY(90vh) translateX(calc(var(--sway) * -0.95)) rotate(calc(var(--rotation) + var(--spin) * 0.8)) scaleX(0.85); }
-    100% { transform: translateY(120vh) translateX(0) rotate(calc(var(--rotation) + var(--spin))) scaleX(1); }
+    20% { transform: translateY(15vh) translateX(calc(var(--sway) * 0.95)) rotate(calc(var(--rotation) + var(--tilt) * 0.95)) scaleX(0.85); }
+    40% { transform: translateY(40vh) translateX(calc(var(--sway) * 0.59)) rotate(calc(var(--rotation) + var(--tilt) * 0.59)) scaleX(1); }
+    60% { transform: translateY(65vh) translateX(calc(var(--sway) * -0.59)) rotate(calc(var(--rotation) - var(--tilt) * 0.59)) scaleX(0.8); }
+    80% { transform: translateY(90vh) translateX(calc(var(--sway) * -0.95)) rotate(calc(var(--rotation) - var(--tilt) * 0.95)) scaleX(0.9); }
+    100% { transform: translateY(120vh) translateX(0) rotate(var(--rotation)) scaleX(1); }
   }
   @media (prefers-reduced-motion: reduce) {
     .leaf { animation: none; display: none; }
@@ -119,7 +119,7 @@ class HaLeaves extends HTMLElement {
         delay: Math.random() * 5.5,
         rotation: Math.random() * 720 - 360,
         sway: Math.random() * 60 - 30,
-        spin: (Math.random() * 720 + 360) * (Math.random() < 0.5 ? -1 : 1),
+        tilt: Math.random() * 20 + 20,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
@@ -147,7 +147,7 @@ class HaLeaves extends HTMLElement {
       svg.style.animationDelay = leaf.delay + "s";
       svg.style.setProperty("--rotation", leaf.rotation + "deg");
       svg.style.setProperty("--sway", leaf.sway + "px");
-      svg.style.setProperty("--spin", leaf.spin + "deg");
+      svg.style.setProperty("--tilt", leaf.tilt + "deg");
       svg.style.color = leaf.color;
 
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
