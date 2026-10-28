@@ -39,11 +39,12 @@ const CSS = `
   }
   .leaf.hide-narrow { display: none; }
   @keyframes fall {
-    0% { transform: translateY(-10vh) translateX(0) rotate(var(--rotation)); }
-    25% { transform: translateY(30vh) translateX(var(--sway)) rotate(calc(var(--rotation) + 45deg)); }
-    50% { transform: translateY(60vh) translateX(calc(var(--sway) * -0.5)) rotate(calc(var(--rotation) + 90deg)); }
-    75% { transform: translateY(85vh) translateX(var(--sway)) rotate(calc(var(--rotation) + 135deg)); }
-    100% { transform: translateY(120vh) translateX(0) rotate(calc(var(--rotation) + 180deg)); }
+    0% { transform: translateY(-10vh) translateX(0) rotate(var(--rotation)) scaleX(1); }
+    20% { transform: translateY(15vh) translateX(var(--sway)) rotate(calc(var(--rotation) + var(--spin) * 0.2)) scaleX(0.75); }
+    40% { transform: translateY(40vh) translateX(calc(var(--sway) * -0.6)) rotate(calc(var(--rotation) + var(--spin) * 0.4)) scaleX(1); }
+    60% { transform: translateY(65vh) translateX(calc(var(--sway) * 0.8)) rotate(calc(var(--rotation) + var(--spin) * 0.6)) scaleX(0.6); }
+    80% { transform: translateY(90vh) translateX(calc(var(--sway) * -0.4)) rotate(calc(var(--rotation) + var(--spin) * 0.8)) scaleX(0.85); }
+    100% { transform: translateY(120vh) translateX(0) rotate(calc(var(--rotation) + var(--spin))) scaleX(1); }
   }
   @media (prefers-reduced-motion: reduce) {
     .leaf { animation: none; display: none; }
@@ -117,7 +118,8 @@ class HaLeaves extends HTMLElement {
         duration: Math.random() * 6 + 8,
         delay: Math.random() * 3,
         rotation: Math.random() * 720 - 360,
-        sway: Math.random() * 40 - 20,
+        sway: Math.random() * 120 - 60,
+        spin: (Math.random() * 720 + 360) * (Math.random() < 0.5 ? -1 : 1),
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
@@ -145,6 +147,7 @@ class HaLeaves extends HTMLElement {
       svg.style.animationDelay = leaf.delay + "s";
       svg.style.setProperty("--rotation", leaf.rotation + "deg");
       svg.style.setProperty("--sway", leaf.sway + "px");
+      svg.style.setProperty("--spin", leaf.spin + "deg");
       svg.style.color = leaf.color;
 
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
