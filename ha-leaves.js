@@ -38,19 +38,38 @@ const CSS = `
     transform-origin: center;
   }
   .leaf.hide-narrow { display: none; }
+  .leaf.tumble { animation: tumble linear infinite; }
   @keyframes fall {
-    0% { transform: translateY(-10vh) translateX(0) rotate(calc(var(--rotation) + var(--tilt))) scaleX(1); }
-    10% { transform: translateY(5vh) translateX(calc(var(--sway) * 0.588)) rotate(calc(var(--rotation) + var(--tilt) * 0.809)) scaleX(1); }
-    20% { transform: translateY(15vh) translateX(calc(var(--sway) * 0.951)) rotate(calc(var(--rotation) + var(--tilt) * 0.309)) scaleX(1); }
-    30% { transform: translateY(28vh) translateX(calc(var(--sway) * 0.951)) rotate(calc(var(--rotation) - var(--tilt) * 0.309)) scaleX(1); }
-    40% { transform: translateY(40vh) translateX(calc(var(--sway) * 0.588)) rotate(calc(var(--rotation) - var(--tilt) * 0.809)) scaleX(1); }
-    50% { transform: translateY(53vh) translateX(0) rotate(calc(var(--rotation) - var(--tilt))) scaleX(1); }
-    60% { transform: translateY(65vh) translateX(calc(var(--sway) * -0.588)) rotate(calc(var(--rotation) - var(--tilt) * 0.809)) scaleX(1); }
-    70% { transform: translateY(78vh) translateX(calc(var(--sway) * -0.951)) rotate(calc(var(--rotation) - var(--tilt) * 0.309)) scaleX(1); }
-    80% { transform: translateY(90vh) translateX(calc(var(--sway) * -0.951)) rotate(calc(var(--rotation) + var(--tilt) * 0.309)) scaleX(1); }
-    90% { transform: translateY(105vh) translateX(calc(var(--sway) * -0.588)) rotate(calc(var(--rotation) + var(--tilt) * 0.809)) scaleX(1); }
-    100% { transform: translateY(120vh) translateX(0) rotate(calc(var(--rotation) + var(--tilt))) scaleX(1); }
+    0% { transform: translateY(-10.0vh) translateX(calc(var(--sway) * 0.000)) rotate(calc(var(--rotation) + var(--tilt) * 1.000)) scaleX(1); }
+    5% { transform: translateY(-3.5vh) translateX(calc(var(--sway) * 0.809)) rotate(calc(var(--rotation) + var(--tilt) * 0.588)) scaleX(1); }
+    10% { transform: translateY(3.0vh) translateX(calc(var(--sway) * 0.951)) rotate(calc(var(--rotation) + var(--tilt) * -0.309)) scaleX(1); }
+    15% { transform: translateY(9.5vh) translateX(calc(var(--sway) * 0.309)) rotate(calc(var(--rotation) + var(--tilt) * -0.951)) scaleX(1); }
+    20% { transform: translateY(16.0vh) translateX(calc(var(--sway) * -0.588)) rotate(calc(var(--rotation) + var(--tilt) * -0.809)) scaleX(1); }
+    25% { transform: translateY(22.5vh) translateX(calc(var(--sway) * -1.000)) rotate(calc(var(--rotation) + var(--tilt) * -0.000)) scaleX(1); }
+    30% { transform: translateY(29.0vh) translateX(calc(var(--sway) * -0.588)) rotate(calc(var(--rotation) + var(--tilt) * 0.809)) scaleX(1); }
+    35% { transform: translateY(35.5vh) translateX(calc(var(--sway) * 0.309)) rotate(calc(var(--rotation) + var(--tilt) * 0.951)) scaleX(1); }
+    40% { transform: translateY(42.0vh) translateX(calc(var(--sway) * 0.951)) rotate(calc(var(--rotation) + var(--tilt) * 0.309)) scaleX(1); }
+    45% { transform: translateY(48.5vh) translateX(calc(var(--sway) * 0.809)) rotate(calc(var(--rotation) + var(--tilt) * -0.588)) scaleX(1); }
+    50% { transform: translateY(55.0vh) translateX(calc(var(--sway) * 0.000)) rotate(calc(var(--rotation) + var(--tilt) * -1.000)) scaleX(1); }
+    55% { transform: translateY(61.5vh) translateX(calc(var(--sway) * -0.809)) rotate(calc(var(--rotation) + var(--tilt) * -0.588)) scaleX(1); }
+    60% { transform: translateY(68.0vh) translateX(calc(var(--sway) * -0.951)) rotate(calc(var(--rotation) + var(--tilt) * 0.309)) scaleX(1); }
+    65% { transform: translateY(74.5vh) translateX(calc(var(--sway) * -0.309)) rotate(calc(var(--rotation) + var(--tilt) * 0.951)) scaleX(1); }
+    70% { transform: translateY(81.0vh) translateX(calc(var(--sway) * 0.588)) rotate(calc(var(--rotation) + var(--tilt) * 0.809)) scaleX(1); }
+    75% { transform: translateY(87.5vh) translateX(calc(var(--sway) * 1.000)) rotate(calc(var(--rotation) + var(--tilt) * 0.000)) scaleX(1); }
+    80% { transform: translateY(94.0vh) translateX(calc(var(--sway) * 0.588)) rotate(calc(var(--rotation) + var(--tilt) * -0.809)) scaleX(1); }
+    85% { transform: translateY(100.5vh) translateX(calc(var(--sway) * -0.309)) rotate(calc(var(--rotation) + var(--tilt) * -0.951)) scaleX(1); }
+    90% { transform: translateY(107.0vh) translateX(calc(var(--sway) * -0.951)) rotate(calc(var(--rotation) + var(--tilt) * -0.309)) scaleX(1); }
+    95% { transform: translateY(113.5vh) translateX(calc(var(--sway) * -0.809)) rotate(calc(var(--rotation) + var(--tilt) * 0.588)) scaleX(1); }
+    100% { transform: translateY(120.0vh) translateX(calc(var(--sway) * -0.000)) rotate(calc(var(--rotation) + var(--tilt) * 1.000)) scaleX(1); }
   }
+  @keyframes tumble {
+    0% { transform: translateY(-10vh) translateX(0) rotate(var(--rotation)) scaleX(1); }
+    25% { transform: translateY(27.5vh) translateX(calc(var(--sway) * 0.2)) rotate(calc(var(--rotation) + 180deg)) scaleX(1); }
+    50% { transform: translateY(55vh) translateX(0) rotate(calc(var(--rotation) + 360deg)) scaleX(1); }
+    75% { transform: translateY(82.5vh) translateX(calc(var(--sway) * -0.2)) rotate(calc(var(--rotation) + 540deg)) scaleX(1); }
+    100% { transform: translateY(120vh) translateX(0) rotate(calc(var(--rotation) + 720deg)) scaleX(1); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .leaf { animation: none; display: none; }
   }
@@ -125,6 +144,7 @@ class HaLeaves extends HTMLElement {
         rotation: Math.random() * 720 - 360,
         sway: Math.random() * 200 - 100,
         tilt: Math.random() * 30 + 40,
+        tumble: Math.random() < 0.25,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
@@ -143,6 +163,7 @@ class HaLeaves extends HTMLElement {
       svg.setAttribute("fill", "none");
       svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
       svg.classList.add("leaf");
+      if (leaf.tumble) svg.classList.add("tumble");
       if (this._narrow && leaf.id >= 28) svg.classList.add("hide-narrow");
 
       svg.style.left = leaf.left + "%";
