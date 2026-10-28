@@ -61,9 +61,9 @@ export class HaLeaves extends LitElement {
         left: Math.random() * 100,
         size: Math.random() * 16 + 12,
         duration: Math.random() * 6 + 8,
-        delay: Math.random() * 3,
+        delay: Math.random() * 5.5,
         rotation: Math.random() * 720 - 360,
-        sway: Math.random() * 120 - 60,
+        sway: Math.random() * 60 - 30,
         spin: (Math.random() * 720 + 360) * (Math.random() < 0.5 ? -1 : 1),
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
@@ -150,19 +150,19 @@ export class HaLeaves extends LitElement {
         transform: translateY(-10vh) translateX(0) rotate(var(--rotation)) scaleX(1);
       }
       20% {
-        transform: translateY(15vh) translateX(var(--sway))
+        transform: translateY(15vh) translateX(calc(var(--sway) * 0.95))
           rotate(calc(var(--rotation) + var(--spin) * 0.2)) scaleX(0.75);
       }
       40% {
-        transform: translateY(40vh) translateX(calc(var(--sway) * -0.6))
+        transform: translateY(40vh) translateX(calc(var(--sway) * 0.59))
           rotate(calc(var(--rotation) + var(--spin) * 0.4)) scaleX(1);
       }
       60% {
-        transform: translateY(65vh) translateX(calc(var(--sway) * 0.8))
+        transform: translateY(65vh) translateX(calc(var(--sway) * -0.59))
           rotate(calc(var(--rotation) + var(--spin) * 0.6)) scaleX(0.6);
       }
       80% {
-        transform: translateY(90vh) translateX(calc(var(--sway) * -0.4))
+        transform: translateY(90vh) translateX(calc(var(--sway) * -0.95))
           rotate(calc(var(--rotation) + var(--spin) * 0.8)) scaleX(0.85);
       }
       100% {
