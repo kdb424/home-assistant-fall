@@ -63,8 +63,8 @@ export class HaLeaves extends LitElement {
         duration: Math.random() * 6 + 8,
         delay: Math.random() * 5.5,
         rotation: Math.random() * 720 - 360,
-        sway: Math.random() * 60 - 30,
-        tilt: Math.random() * 20 + 20,
+        sway: Math.random() * 40 - 20,
+        tilt: Math.random() * 10 + 15,
         type: Math.floor(Math.random() * LEAF_PATHS.length),
         color: colors[Math.floor(Math.random() * colors.length)],
       });
@@ -147,27 +147,48 @@ export class HaLeaves extends LitElement {
 
     @keyframes fall {
       0% {
-        transform: translateY(-10vh) translateX(0) rotate(var(--rotation)) scaleX(1);
+        transform: translateY(-10vh) translateX(0)
+          rotate(calc(var(--rotation) + var(--tilt))) scaleX(1);
+      }
+      10% {
+        transform: translateY(5vh) translateX(calc(var(--sway) * 0.588))
+          rotate(calc(var(--rotation) + var(--tilt) * 0.809)) scaleX(1);
       }
       20% {
-        transform: translateY(15vh) translateX(calc(var(--sway) * 0.95))
-          rotate(calc(var(--rotation) + var(--tilt) * 0.95)) scaleX(0.85);
+        transform: translateY(15vh) translateX(calc(var(--sway) * 0.951))
+          rotate(calc(var(--rotation) + var(--tilt) * 0.309)) scaleX(1);
+      }
+      30% {
+        transform: translateY(28vh) translateX(calc(var(--sway) * 0.951))
+          rotate(calc(var(--rotation) - var(--tilt) * 0.309)) scaleX(1);
       }
       40% {
-        transform: translateY(40vh) translateX(calc(var(--sway) * 0.59))
-          rotate(calc(var(--rotation) + var(--tilt) * 0.59)) scaleX(1);
+        transform: translateY(40vh) translateX(calc(var(--sway) * 0.588))
+          rotate(calc(var(--rotation) - var(--tilt) * 0.809)) scaleX(1);
+      }
+      50% {
+        transform: translateY(53vh) translateX(0)
+          rotate(calc(var(--rotation) - var(--tilt))) scaleX(1);
       }
       60% {
-        transform: translateY(65vh) translateX(calc(var(--sway) * -0.59))
-          rotate(calc(var(--rotation) - var(--tilt) * 0.59)) scaleX(0.8);
+        transform: translateY(65vh) translateX(calc(var(--sway) * -0.588))
+          rotate(calc(var(--rotation) - var(--tilt) * 0.809)) scaleX(1);
+      }
+      70% {
+        transform: translateY(78vh) translateX(calc(var(--sway) * -0.951))
+          rotate(calc(var(--rotation) - var(--tilt) * 0.309)) scaleX(1);
       }
       80% {
-        transform: translateY(90vh) translateX(calc(var(--sway) * -0.95))
-          rotate(calc(var(--rotation) - var(--tilt) * 0.95)) scaleX(0.9);
+        transform: translateY(90vh) translateX(calc(var(--sway) * -0.951))
+          rotate(calc(var(--rotation) + var(--tilt) * 0.309)) scaleX(1);
+      }
+      90% {
+        transform: translateY(105vh) translateX(calc(var(--sway) * -0.588))
+          rotate(calc(var(--rotation) + var(--tilt) * 0.809)) scaleX(1);
       }
       100% {
         transform: translateY(120vh) translateX(0)
-          rotate(var(--rotation)) scaleX(1);
+          rotate(calc(var(--rotation) + var(--tilt))) scaleX(1);
       }
     }
 
