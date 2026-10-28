@@ -33,8 +33,13 @@
   <body>
     <h1 style="padding:2rem">Home Assistant Fall Mode (demo)</h1>
     <div class="controls">
-      <button id="toggle">Toggle leaves</button>
-      <button id="dark">Toggle dark</button>
+      <button id="toggle">Toggle</button>
+      <button id="dark">Dark</button>
+      <button data-season="auto">Auto</button>
+      <button data-season="fall">Fall</button>
+      <button data-season="spring">Spring</button>
+      <button data-season="summer">Summer</button>
+      <button data-season="winter">Winter</button>
     </div>
     <ha-leaves id="leaves"></ha-leaves>
     <script type="module">
@@ -48,6 +53,11 @@
         document.body.style.background = leaves.darkMode
           ? "linear-gradient(#1a1a2e, #16213e)"
           : "linear-gradient(#f7e7d3, #d9a066)";
+      });
+      document.querySelectorAll("button[data-season]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          leaves.season = btn.dataset.season;
+        });
       });
     </script>
   </body>
